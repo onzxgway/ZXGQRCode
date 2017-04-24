@@ -160,7 +160,7 @@ float const kQRCodeScanLineOffsetY = 4.f;
     if (!_qrlineImageView) {
         _qrlineImageView = [[UIImageView alloc] initWithFrame:CGRectMake(_transparentAreaX + kQRCodeScanLineSpace, _transparentAreaY + kQRCodeScanLineOffsetY, _qrLineSize.width, _qrLineSize.height)];
         _qrlineImageView.backgroundColor = _qrLineColor;
-//        _qrlineImageView.hidden = YES;
+        _qrlineImageView.hidden = YES;
         if ([_image isKindOfClass:[NSString class]]) {
             _qrlineImageView.image = [UIImage imageNamed:_image];
         }
@@ -180,7 +180,7 @@ float const kQRCodeScanLineOffsetY = 4.f;
         return;
     }
     
-    _qrlineOffsetY += 1;
+    _qrlineOffsetY = _qrlineOffsetY + 2;
     _qrlineImageView.transform = CGAffineTransformMakeTranslation(0, _qrlineOffsetY);
     
 }

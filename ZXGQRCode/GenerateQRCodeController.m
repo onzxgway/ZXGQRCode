@@ -24,7 +24,7 @@
     self.view.backgroundColor = [UIColor whiteColor];
     self.navigationController.navigationBar.translucent = NO;
     
-    NSString *url = @"https://www.baidu.com/";
+    NSString *url = @"https://github.com/onzxgway/ZXGQRCode";
     CGSize size = CGSizeMake(150, 150);
     CGSize logoImageSize = CGSizeMake(30, 30);
     UIImage *one = [ZXGQRCodeTool generateQRCodeImageWithString:url imageSize:size];

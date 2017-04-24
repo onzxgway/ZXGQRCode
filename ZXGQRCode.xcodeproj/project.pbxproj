@@ -20,6 +20,7 @@
 		F01BDE671EADCA7900078757 /* ZXGQRCodeTool.m in Sources */ = {isa = PBXBuildFile; fileRef = F01BDE661EADCA7900078757 /* ZXGQRCodeTool.m */; };
 		F09A7E241EADF49300D11890 /* ScanQRCodeController.m in Sources */ = {isa = PBXBuildFile; fileRef = F09A7E231EADF49300D11890 /* ScanQRCodeController.m */; };
 		F09A7E271EADF4EB00D11890 /* GenerateQRCodeController.m in Sources */ = {isa = PBXBuildFile; fileRef = F09A7E261EADF4EB00D11890 /* GenerateQRCodeController.m */; };
+		F09A7E2A1EAE323A00D11890 /* ZXGQRCodeLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = F09A7E291EAE323A00D11890 /* ZXGQRCodeLoadingView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +67,8 @@
 		F09A7E231EADF49300D11890 /* ScanQRCodeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScanQRCodeController.m; sourceTree = "<group>"; };
 		F09A7E251EADF4EB00D11890 /* GenerateQRCodeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GenerateQRCodeController.h; sourceTree = "<group>"; };
 		F09A7E261EADF4EB00D11890 /* GenerateQRCodeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GenerateQRCodeController.m; sourceTree = "<group>"; };
+		F09A7E281EAE323A00D11890 /* ZXGQRCodeLoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZXGQRCodeLoadingView.h; sourceTree = "<group>"; };
+		F09A7E291EAE323A00D11890 /* ZXGQRCodeLoadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZXGQRCodeLoadingView.m; sourceTree = "<group>"; };
 		F0FFCC6F1EADEDE500054D03 /* ZXGQRCode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZXGQRCode.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -131,6 +134,8 @@
 				F00CE4FB1EA9EFE400B7B6E1 /* LaunchScreen.storyboard */,
 				F00CE4FE1EA9EFE400B7B6E1 /* Info.plist */,
 				F00CE4ED1EA9EFE400B7B6E1 /* Supporting Files */,
+				F09A7E281EAE323A00D11890 /* ZXGQRCodeLoadingView.h */,
+				F09A7E291EAE323A00D11890 /* ZXGQRCodeLoadingView.m */,
 			);
 			path = ZXGQRCode;
 			sourceTree = "<group>";
@@ -309,6 +314,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F09A7E2A1EAE323A00D11890 /* ZXGQRCodeLoadingView.m in Sources */,
 				F00CE4F51EA9EFE400B7B6E1 /* ViewController.m in Sources */,
 				F00CE5231EAAE0FE00B7B6E1 /* ZXGQRCodeScanView.m in Sources */,
 				F09A7E271EADF4EB00D11890 /* GenerateQRCodeController.m in Sources */,

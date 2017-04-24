@@ -1,10 +1,5 @@
-//
-//  ZXGQRCode.h
-//  ZXGQRCode
-//
-//  Created by san_xu on 2017/4/24.
-//  Copyright © 2017年 com.zxg. All rights reserved.
-//
+// 代码地址: https://github.com/onzxgway/ZXGQRCode
+
 
 #import "ZXGQRCodeScanView.h"
 #import "ZXGQRCodeTool.h"
