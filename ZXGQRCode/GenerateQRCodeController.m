@@ -39,7 +39,6 @@
     UIImage *four = [ZXGQRCodeTool generateColoursLogoImageWithString:url imageSize:size rgbColor:[UIColor orangeColor] backgroundColor:[UIColor grayColor] logoImageName:@"help" logoImageSize:logoImageSize];
     [_imgs addObject:four];
     
-    
     [self addImageView];
 }
 

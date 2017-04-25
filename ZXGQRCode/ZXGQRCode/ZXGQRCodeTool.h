@@ -59,7 +59,21 @@
                                          rgbColor:(UIColor *)rgbColor
                                   backgroundColor:(UIColor *)backgroundColor;
 
-
+/**
+ 生成指定颜色的二维码图片
+ 
+ @param str 要生成二维码的数据
+ @param imageSize 生成的二维码图片size
+ @param red 红色（0~255）
+ @param green 绿色（0~255）
+ @param blue 蓝色（0~255）
+ @return 生成的二维码图片
+ */
++ (UIImage *)generateColoursQRCodeImageWithString:(NSString *)str
+                                        imageSize:(CGSize)imageSize
+                                              red:(CGFloat)red
+                                            green:(CGFloat)green
+                                             blue:(CGFloat)blue NS_DEPRECATED(1_0,1_0,1_0,1_0,"use generateColoursQRCodeImageWithString: imageSize:rgbColor:backgroundColor: instead");
 /**
  生成黑白带logo的二维码图片
 
