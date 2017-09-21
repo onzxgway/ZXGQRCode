@@ -16,7 +16,6 @@
     [super viewDidLoad];
     //
     self.navigationItem.title = @"ZXGQRCode";
-    
 }
 
 //扫描

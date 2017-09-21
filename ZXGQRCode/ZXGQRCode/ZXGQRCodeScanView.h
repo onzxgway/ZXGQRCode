@@ -58,7 +58,6 @@ typedef void(^ZXGScanResult)(NSString *);
  */
 - (void)stopRunning;
 
-
 /**
  创建对象1
 
