@@ -16,6 +16,6 @@ Pod::Spec.new do |s|
   s.source       = { :git => "https://github.com/onzxgway/ZXGQRCode.git", :tag => s.version}
 
   s.social_media_url   = "https://onzxgway.github.io"
-  s.source_files  = "ZXGQRCode/*.{h,m}"
+  s.source_files  = "ZXGQRCode/**/*.{h,m}"
   s.requires_arc  = true
 end
