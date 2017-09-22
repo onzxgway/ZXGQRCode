@@ -11,6 +11,7 @@
 
 @implementation ZXGQRCodeConfig
 
+#pragma mark - APIs
 - (void)createScanSystem:(ZXGQRCodeScanView *)view resultDelegate:(id)delegate {
     //1,采集图像的设备（摄像头）
     _captureDevice = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
@@ -48,10 +49,8 @@
     //7.设置扫描区域
     CGFloat viewW = CGRectGetWidth(view.frame);
     CGFloat viewH = CGRectGetHeight(view.frame);
-    CGRect rect = CGRectMake((viewW - view.transparentArea.width) / 2,
-                             view.transparentAreaY,
-                             view.transparentArea.width,
-                             view.transparentArea.height);
+    CGFloat res = [[view valueForKey:@"_transparentAreaX"] floatValue];
+    CGRect rect = (CGRect){{res,view.transparentAreaY},view.transparentAreaSize};
     [_captureMetadataOutput setRectOfInterest:CGRectMake(rect.origin.y / viewH,
                                                          rect.origin.x / viewW,
                                                          rect.size.height / viewH,

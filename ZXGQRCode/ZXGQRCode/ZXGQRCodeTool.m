@@ -35,10 +35,10 @@
             __block BOOL result;
             [AVCaptureDevice requestAccessForMediaType:AVMediaTypeVideo completionHandler:^(BOOL granted) {
                 if (granted) {
-                    // 第一次询问用户允许当前应用访问相机
+                    // 用户允许当前应用访问相机
                     result = YES;
                 } else {
-                    // 第一次询问用户不允许当前应用访问相机
+                    // 用户不允许当前应用访问相机
                     result = NO;
                 }
             }];
@@ -99,7 +99,7 @@
 //生成黑白的二维码图片
 + (UIImage *)generateQRCodeImageWithString:(NSString *)str
                                  imageSize:(CGSize)imageSize {
-    return [self generateLogoQRCodeImageWithString:str imageSize:imageSize logoImageName:nil logoImageSize:CGSizeZero];
+    return [self generateLogoQRCodeImageWithString:str imageSize:imageSize logoImageName:@"" logoImageSize:CGSizeZero];
 }
 
 //生成彩色的二维码图片
@@ -108,7 +108,7 @@
                                          rgbColor:(UIColor *)rgbColor
                                   backgroundColor:(UIColor *)backgroundColor {
     
-    return [self generateColoursLogoImageWithString:str imageSize:imageSize rgbColor:rgbColor backgroundColor:backgroundColor logoImageName:nil logoImageSize:CGSizeZero];
+    return [self generateColoursLogoImageWithString:str imageSize:imageSize rgbColor:rgbColor backgroundColor:backgroundColor logoImageName:@"" logoImageSize:CGSizeZero];
 }
 
 //不推荐使用

@@ -8,45 +8,40 @@
 
 #import <UIKit/UIKit.h>
 
+NS_ASSUME_NONNULL_BEGIN
+
 typedef void(^ZXGScanResult)(NSString *);
 
 @interface ZXGQRCodeScanView : UIView
 
-/**
- 透明的区域
- */
-@property (nonatomic, assign) CGSize transparentArea;//透明的区域 的大小
-@property (nonatomic, assign) CGFloat transparentAreaY;//透明的区域 的位置的Y值
+//透明区域
+@property (nonatomic, assign) CGSize transparentAreaSize;  //大小
+@property (nonatomic, assign) CGFloat transparentAreaY;    //位置的Y值
 
-/**
- 扫描线条
- */
-@property (copy,nonatomic)id image;//扫描线条图片，或者图片的名称，默认是@""
-@property (nonatomic, assign) CGSize qrLineSize;// 默认宽度等于transparentArea宽度减去10，高度2
-@property (strong,nonatomic)UIColor *qrLineColor;//扫描线条颜色，默认是clearColor
+//扫描线条
+@property (nonatomic, copy  ) id image;            //扫描线条图片，或者图片的名称，默认是@""
+@property (nonatomic, assign) CGSize qrLineSize;   //默认宽度等于transparentArea宽度减去10，高度2
+@property (nonatomic, strong) UIColor *qrLineColor;//扫描线条颜色，默认是clearColor
 
-/**
- 四个边角
- */
-@property (nonatomic, assign) CGFloat cornerLineLength;// 边角线条长度，默认15
-@property (nonatomic, assign) CGFloat cornerLineWidth;// 边角线条宽度，默认2
-@property (strong,nonatomic)UIColor *cornerLineColor;// 边角线颜色，默认白色
+//四个边角线
+@property (nonatomic, assign) CGFloat cornerLineLength;//长度，默认15
+@property (nonatomic, assign) CGFloat cornerLineWidth; //宽度，默认2
+@property (nonatomic, strong) UIColor *cornerLineColor;//颜色，默认白色
 
-/**
- 底部说明文字
- */
-@property (copy,nonatomic)NSString *instructText;//说明内容
-@property (assign,nonatomic) CGFloat instructFont;//字体的大小，默认12
 
-/**
- 是否打开系统照明
- */
-@property (assign,nonatomic)BOOL openSystemLight;
+@property (nonatomic, copy  ) NSString *instructText;//底部说明文本
+@property (nonatomic, assign) CGFloat instructFont;  //字体的大小，默认12
 
-/**
- 扫描结果回调
- */
-@property (copy,nonatomic)ZXGScanResult qrCodeScanResult;
+//是否打开系统照明
+@property (nonatomic, assign) BOOL openSystemLight;
+
+//扫描结果回调
+@property (nonatomic, copy  ) ZXGScanResult qrCodeScanResult;
+
+@property (nonatomic, weak  ) id resultTarget;      // 回调对象
+@property (nonatomic, assign) SEL resultAction;     // 回调方法
+@property (nonatomic, copy  ) NSString *scanResult; // 扫描结果 只在调用类方法二时才有值
+
 
 /**
  开始扫描
@@ -59,27 +54,22 @@ typedef void(^ZXGScanResult)(NSString *);
 - (void)stopRunning;
 
 /**
- 创建对象1
+ 创建对象类方法一
 
- @param scanResult 扫描结果回调
- @return <#return value description#>
+ @param scanResult 扫描结果回调Block
+ @return 实例化对象
  */
 + (instancetype)qrCodeScanViewWithResultBlock:(ZXGScanResult)scanResult;
 
-/** 回调对象 */
-@property (weak, nonatomic) id resultTarget;
-/** 回调方法 */
-@property (assign, nonatomic) SEL resultAction;
-/** 扫描结果 */
-@property (copy,nonatomic)NSString *scanResult; //只在调用类方法2时有值
-
 /**
- 创建对象类方法2
+ 创建对象类方法二
 
- @param target <#target description#>
- @param action <#action description#>
- @return <#return value description#>
+ @param target obj
+ @param action SEL
+ @return 实例化对象
  */
 + (instancetype)qrCodeScanViewWithTarget:(id)target resultAction:(SEL)action;
 
 @end
+
+NS_ASSUME_NONNULL_END

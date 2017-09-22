@@ -9,24 +9,16 @@
 #import "ZXGQRCodeScanView.h"
 #import "ZXGQRCodeConfig.h"
 #import "ZXGQRCodeTool.h"
-
-#define kCornerLineOffset (_cornerLineWidth * 0.5)
-#define kScreenHeight [UIScreen mainScreen].bounds.size.height
-#define kScreenWidth [UIScreen mainScreen].bounds.size.width
-
-float const kMargin = 30.f;
-float const kQRCodeScanLineSpace = 5.f;
-float const kQRCodeScanLineOffsetY = 4.f;
+#import "ZXGConst.h"
 
 @implementation ZXGQRCodeScanView {
-    ZXGQRCodeConfig *_qrCodeConfig;
-    CADisplayLink *_link;
+    ZXGQRCodeConfig *_qrCodeConfig;//二维码处理器
+    CADisplayLink *_link;//定时器
     
-    UIImageView *_qrlineImageView;
-    CGFloat _qrlineOffsetY;
-    CGFloat _qrlineScanMaxBorder;
-    
-    CGFloat _transparentAreaX;
+    UIImageView *_qrlineImageView;//水平扫描线条
+    CGFloat _qrlineOffsetY;//水平扫描线条 每次垂直移动的距离
+    CGFloat _qrlineScanMaxY;//水平扫描线条 扫描范围的最大Y值
+    CGFloat _transparentAreaX;//透明区域位置的X值
 }
 
 #pragma mark - Override
@@ -35,17 +27,22 @@ float const kQRCodeScanLineOffsetY = 4.f;
     self = [super initWithFrame:frame];
     if (self) {
         
+        //边角线
         _cornerLineLength = 15;
         _cornerLineWidth = 2;
         _cornerLineColor = [UIColor whiteColor];
         
-        CGFloat transparentAreaW = kScreenWidth - kScreenWidth * 0.15 * 2;
-        _transparentAreaY = (kScreenHeight - transparentAreaW) / 2;//默认透明区域位置
-        self.transparentArea = CGSizeMake(transparentAreaW, transparentAreaW);//默认透明区域大小
+        //透明区域
+        CGFloat transparentAreaW = ScreenWidth - ScreenWidth * 0.15 * 2;
+        CGFloat transparentAreaH = transparentAreaW;
+        _transparentAreaY = (ScreenHeight - transparentAreaH) * 0.5;//默认透明区域位置
+        self.transparentAreaSize = CGSizeMake(transparentAreaW, transparentAreaH);//默认透明区域大小
 
+        //扫描线条
         _image = @"";//扫描线条图片名称
         _qrLineColor = [UIColor clearColor];
         
+        //底部说明
         _instructText = @"将二维码/条码放入框内，即可自动扫描";
         _instructFont = 12.0f;
         
@@ -56,18 +53,19 @@ float const kQRCodeScanLineOffsetY = 4.f;
 - (void)layoutSubviews {
     [super layoutSubviews];
     
-    [self qrCodeLineInit];
+    [self getQRCodeLine];
 }
 
 - (void)drawRect:(CGRect)rect {
+    
+    CGContextRef ctx = UIGraphicsGetCurrentContext();//当前的绘图上下文
     //半透明的背景
-    CGContextRef ctx = UIGraphicsGetCurrentContext();
-    CGContextSetRGBFillColor(ctx, 0, 0, 0, 0.5);
+    CGContextSetRGBFillColor(ctx, 0, 0, 0, 0.5);//黑色 半透明
     CGContextAddRect(ctx, self.bounds);
     CGContextDrawPath(ctx, kCGPathFill);
     
     //透明区域
-    CGRect transparentAreaRect = CGRectMake(_transparentAreaX, _transparentAreaY, _transparentArea.width, _transparentArea.height);
+    CGRect transparentAreaRect = CGRectMake(_transparentAreaX, _transparentAreaY, _transparentAreaSize.width, _transparentAreaSize.height);
     CGContextClearRect(ctx, transparentAreaRect);
     
     //白色的边框
@@ -77,7 +75,7 @@ float const kQRCodeScanLineOffsetY = 4.f;
     CGContextDrawPath(ctx, kCGPathStroke);
     
     
-    //四个角的线
+    //四个角线
     //左上
     CGContextMoveToPoint(ctx, transparentAreaRect.origin.x + kCornerLineOffset, transparentAreaRect.origin.y + _cornerLineLength);
     CGContextAddLineToPoint(ctx, transparentAreaRect.origin.x + kCornerLineOffset, transparentAreaRect.origin.y + kCornerLineOffset);
@@ -105,11 +103,11 @@ float const kQRCodeScanLineOffsetY = 4.f;
     CGContextDrawPath(ctx, kCGPathStroke);
     
     //说明文字
-    CGRect charRect = [_instructText boundingRectWithSize:CGSizeMake(kScreenWidth, MAXFLOAT) options:0 attributes:@{NSFontAttributeName: [UIFont systemFontOfSize:_instructFont]} context:nil];
-    [_instructText drawInRect:CGRectMake((kScreenWidth - charRect.size.width) / 2, _transparentAreaY + _transparentArea.height + kMargin, charRect.size.width, 36) withAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor],NSFontAttributeName: [UIFont systemFontOfSize:_instructFont]}];
+    CGRect charRect = [_instructText boundingRectWithSize:CGSizeMake(ScreenWidth, MAXFLOAT) options:0 attributes:@{NSFontAttributeName: [UIFont systemFontOfSize:_instructFont]} context:nil];
+    [_instructText drawInRect:CGRectMake((ScreenWidth - charRect.size.width) * 0.5, _transparentAreaY + _transparentAreaSize.height + LableMargin, charRect.size.width, _instructFont + 4) withAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor],NSFontAttributeName: [UIFont systemFontOfSize:_instructFont]}];
 }
 
-#pragma mark - API
+#pragma mark - APIs
 + (instancetype)qrCodeScanViewWithResultBlock:(ZXGScanResult)scanResult {
     ZXGQRCodeScanView *qrCodeScanView = [[self alloc] init];
     qrCodeScanView.qrCodeScanResult = scanResult;
@@ -155,42 +153,41 @@ float const kQRCodeScanLineOffsetY = 4.f;
     [_qrCodeConfig.captureSession stopRunning];
 }
 
-#pragma mark - init
-- (UIImageView *)qrCodeLineInit {
+#pragma mark - lazy load
+- (UIImageView *)getQRCodeLine {
     if (!_qrlineImageView) {
-        _qrlineImageView = [[UIImageView alloc] initWithFrame:CGRectMake(_transparentAreaX + kQRCodeScanLineSpace, _transparentAreaY + kQRCodeScanLineOffsetY, _qrLineSize.width, _qrLineSize.height)];
+        _qrlineImageView = [[UIImageView alloc] initWithFrame:CGRectMake(_transparentAreaX + QRCodeScanLineMargin, _transparentAreaY + QRCodeScanLineOffsetY, _qrLineSize.width, _qrLineSize.height)];
         _qrlineImageView.backgroundColor = _qrLineColor;
         _qrlineImageView.hidden = YES;
-        if ([_image isKindOfClass:[NSString class]]) {
-            _qrlineImageView.image = [UIImage imageNamed:_image];
-        }
-        if ([_image isKindOfClass:[UIImage class]]) {
-            _qrlineImageView.image = _image;
-        }
+        
+        if ([_image isKindOfClass:[NSString class]]) _qrlineImageView.image = [UIImage imageNamed:_image];
+        if ([_image isKindOfClass:[UIImage class]]) _qrlineImageView.image = _image;
         [self addSubview:_qrlineImageView];
     }
     return _qrlineImageView;
 }
 
 #pragma mark - private
+// 扫描线条 垂直移动
 - (void)startLineAnimate {
 
-    if (_qrlineImageView.frame.origin.y > _qrlineScanMaxBorder) {
+    if (_qrlineImageView.frame.origin.y > _qrlineScanMaxY) {
         [self qrScanLineHome];
         return;
     }
     
-    _qrlineOffsetY = _qrlineOffsetY + 2;
+    _qrlineOffsetY += 2;
     _qrlineImageView.transform = CGAffineTransformMakeTranslation(0, _qrlineOffsetY);
     
 }
 
-// 扫描线条归位
+// 扫描线条 归位
 - (void)qrScanLineHome {
     _qrlineImageView.transform = CGAffineTransformIdentity;
     _qrlineOffsetY = 0;
 }
 
+// 移除定时器
 - (void)removeCADisplayLink {
     [_link invalidate];
     _link = nil;
@@ -233,33 +230,33 @@ float const kQRCodeScanLineOffsetY = 4.f;
     [self setNeedsDisplay];
 }
 
-- (void)setTransparentArea:(CGSize)transparentArea {
-    _transparentArea = transparentArea;
+- (void)setTransparentAreaSize:(CGSize)transparentAreaSize {
+    _transparentAreaSize = transparentAreaSize;
     
-    _qrlineScanMaxBorder = _transparentAreaY + _transparentArea.height - kQRCodeScanLineOffsetY;
-    _transparentAreaX = (kScreenWidth - transparentArea.width) / 2;
-    _qrLineSize = CGSizeMake(transparentArea.width - kQRCodeScanLineSpace * 2, 2);
+    _qrlineScanMaxY = _transparentAreaY + _transparentAreaSize.height - QRCodeScanLineOffsetY;
+    _transparentAreaX = (ScreenWidth - transparentAreaSize.width) * 0.5;
+    _qrLineSize = CGSizeMake(transparentAreaSize.width - QRCodeScanLineMargin * 2, 2);
     [self setNeedsDisplay];
 }
 
 - (void)setTransparentAreaY:(CGFloat)transparentAreaY {
     _transparentAreaY = transparentAreaY;
     
-    _qrlineScanMaxBorder = _transparentAreaY + _transparentArea.height - kQRCodeScanLineOffsetY;
+    _qrlineScanMaxY = _transparentAreaY + _transparentAreaSize.height - QRCodeScanLineOffsetY;
 }
 
-#pragma mark AVCaptureMetadataOutputObjectsDelegate
+#pragma mark - AVCaptureMetadataOutputObjects Delegate
 - (void)captureOutput:(AVCaptureOutput *)captureOutput didOutputMetadataObjects:(NSArray *)metadataObjects fromConnection:(AVCaptureConnection *)connection {
-    if (metadataObjects != nil && metadataObjects.count > 0) {
-        AVMetadataMachineReadableCodeObject *result = [metadataObjects objectAtIndex:0];
+    if (metadataObjects && metadataObjects.count > 0) {
+        AVMetadataMachineReadableCodeObject *result = [metadataObjects firstObject];
         
-        if (result.stringValue != nil && ![result.stringValue isEqualToString:@""]) {
+        if (result.stringValue && ![result.stringValue isEqualToString:@""]) {
             if (self.qrCodeScanResult) {
                 [self stopRunning];
                 self.qrCodeScanResult(result.stringValue);
             }
             
-            if ([self.resultTarget respondsToSelector:self.resultAction]) {
+            if (self.resultTarget && self.resultAction && [self.resultTarget respondsToSelector:self.resultAction]) {
                 [self stopRunning];
                 _scanResult = result.stringValue;
 _Pragma("clang diagnostic push")

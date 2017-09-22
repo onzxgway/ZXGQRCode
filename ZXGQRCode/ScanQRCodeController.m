@@ -42,15 +42,15 @@
     
     //第二种使用方式
     
-    _qrCodeScanView = [ZXGQRCodeScanView qrCodeScanViewWithResultBlock:^(NSString *result) {
-        NSLog(@"%@",result);
-    }];
+//    _qrCodeScanView = [ZXGQRCodeScanView qrCodeScanViewWithResultBlock:^(NSString *result) {
+//        NSLog(@"%@",result);
+//    }];
     
     
     //第三种使用方式
-    /*
+    
      _qrCodeScanView = [ZXGQRCodeScanView qrCodeScanViewWithTarget:self resultAction:@selector(result:)];
-     */
+     
     
     _qrCodeScanView.frame = self.view.bounds;
     _qrCodeScanView.image = [UIImage imageNamed:@"line.pdf"];
