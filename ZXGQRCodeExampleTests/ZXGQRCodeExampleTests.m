@@ -1,18 +1,18 @@
 //
-//  ZXGQRCodeTests.m
-//  ZXGQRCodeTests
+//  ZXGQRCodeExampleTests.m
+//  ZXGQRCodeExampleTests
 //
-//  Created by san_xu on 2017/4/21.
-//  Copyright © 2017年 com.zxg. All rights reserved.
+//  Created by san_xu on 2017/9/22.
+//  Copyright © 2017年 onzxgway. All rights reserved.
 //
 
 #import <XCTest/XCTest.h>
 
-@interface ZXGQRCodeTests : XCTestCase
+@interface ZXGQRCodeExampleTests : XCTestCase
 
 @end
 
-@implementation ZXGQRCodeTests
+@implementation ZXGQRCodeExampleTests
 
 - (void)setUp {
     [super setUp];

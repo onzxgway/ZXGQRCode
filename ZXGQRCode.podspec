@@ -2,7 +2,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "ZXGQRCode"
-  s.version      = "0.0.1"
+  s.version      = "0.0.2"
   s.summary      = "简单方便的二维码扫描和生成框架."
   s.homepage     = "https://github.com/onzxgway/ZXGQRCode"
   s.license      = {:type => "MIT", :file => "LICENSE" }
@@ -16,6 +16,6 @@ Pod::Spec.new do |s|
   s.source       = { :git => "https://github.com/onzxgway/ZXGQRCode.git", :tag => s.version}
 
   s.social_media_url   = "https://onzxgway.github.io"
-  s.source_files  = "ZXGQRCode/ZXGQRCode/*.{h,m}"
+  s.source_files  = "ZXGQRCode/*.{h,m}"
   s.requires_arc  = true
 end

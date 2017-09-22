@@ -4,7 +4,7 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>ZXGQRCode.xcscheme</key>
+		<key>ZXGQRCodeExample.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>0</integer>
@@ -12,17 +12,17 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>F00CE4E91EA9EFE400B7B6E1</key>
+		<key>F0501F241F75274200C93A0C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>F00CE5021EA9EFE500B7B6E1</key>
+		<key>F0501F3D1F75274300C93A0C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>F00CE50D1EA9EFE500B7B6E1</key>
+		<key>F0501F481F75274300C93A0C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
