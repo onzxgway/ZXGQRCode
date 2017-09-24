@@ -50,10 +50,9 @@
     //第三种使用方式
     
      _qrCodeScanView = [ZXGQRCodeScanView qrCodeScanViewWithTarget:self resultAction:@selector(result:)];
-     
     
     _qrCodeScanView.frame = self.view.bounds;
-    _qrCodeScanView.image = [UIImage imageNamed:@"line.pdf"];
+//    _qrCodeScanView.image = [UIImage imageNamed:@"line.pdf"];
     [self.view addSubview:_qrCodeScanView];
     //设置项
     //    [_qrCodeScanView setTransparentAreaY:80];

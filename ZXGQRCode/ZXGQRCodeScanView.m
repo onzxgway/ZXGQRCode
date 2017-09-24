@@ -39,7 +39,7 @@
         self.transparentAreaSize = CGSizeMake(transparentAreaW, transparentAreaH);//默认透明区域大小
 
         //扫描线条
-        _image = @"";//扫描线条图片名称
+        _image = @"ZXGQRCode.bundle/line@2x.png";//扫描线条图片名称
         _qrLineColor = [UIColor clearColor];
         
         //底部说明

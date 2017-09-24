@@ -22,6 +22,7 @@
 		F0501F381F75274200C93A0C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F0501F361F75274200C93A0C /* LaunchScreen.storyboard */; };
 		F0501F431F75274300C93A0C /* ZXGQRCodeExampleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F0501F421F75274300C93A0C /* ZXGQRCodeExampleTests.m */; };
 		F0501F4E1F75274300C93A0C /* ZXGQRCodeExampleUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = F0501F4D1F75274300C93A0C /* ZXGQRCodeExampleUITests.m */; };
+		F0930F491F77EB2F00C0CBA6 /* ZXGQRCode.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F0930F481F77EB2F00C0CBA6 /* ZXGQRCode.bundle */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +74,7 @@
 		F0501F491F75274300C93A0C /* ZXGQRCodeExampleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ZXGQRCodeExampleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0501F4D1F75274300C93A0C /* ZXGQRCodeExampleUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZXGQRCodeExampleUITests.m; sourceTree = "<group>"; };
 		F0501F4F1F75274300C93A0C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F0930F481F77EB2F00C0CBA6 /* ZXGQRCode.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ZXGQRCode.bundle; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -139,6 +141,7 @@
 				F02CB41F1F7528DC00A905E3 /* ZXGQRCodeScanView.m */,
 				F02CB4201F7528DC00A905E3 /* ZXGQRCodeTool.h */,
 				F02CB4211F7528DC00A905E3 /* ZXGQRCodeTool.m */,
+				F0930F481F77EB2F00C0CBA6 /* ZXGQRCode.bundle */,
 			);
 			path = ZXGQRCode;
 			sourceTree = SOURCE_ROOT;
@@ -268,6 +271,7 @@
 				TargetAttributes = {
 					F0501F241F75274200C93A0C = {
 						CreatedOnToolsVersion = 8.3.1;
+						DevelopmentTeam = C7QWF37U49;
 						ProvisioningStyle = Automatic;
 					};
 					F0501F3D1F75274300C93A0C = {
@@ -310,6 +314,7 @@
 				F0501F381F75274200C93A0C /* LaunchScreen.storyboard in Resources */,
 				F0501F351F75274200C93A0C /* Assets.xcassets in Resources */,
 				F02CB4271F7529D100A905E3 /* Main.storyboard in Resources */,
+				F0930F491F77EB2F00C0CBA6 /* ZXGQRCode.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -485,11 +490,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = C7QWF37U49;
 				INFOPLIST_FILE = ZXGQRCodeExample/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = onzxgway.ZXGQRCodeExample;
+				PRODUCT_BUNDLE_IDENTIFIER = cn.app.huakala;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -498,11 +503,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = C7QWF37U49;
 				INFOPLIST_FILE = ZXGQRCodeExample/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = onzxgway.ZXGQRCodeExample;
+				PRODUCT_BUNDLE_IDENTIFIER = cn.app.huakala;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

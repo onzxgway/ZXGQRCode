@@ -19,7 +19,7 @@ typedef void(^ZXGScanResult)(NSString *);
 @property (nonatomic, assign) CGFloat transparentAreaY;    //位置的Y值
 
 //扫描线条
-@property (nonatomic, copy  ) id image;            //扫描线条图片，或者图片的名称，默认是@""
+@property (nonatomic, copy  ) id image;            //扫描线条图片，或者图片的名称，默认是@"ZXGQRCode.bundle/line@2x.png"
 @property (nonatomic, assign) CGSize qrLineSize;   //默认宽度等于transparentArea宽度减去10，高度2
 @property (nonatomic, strong) UIColor *qrLineColor;//扫描线条颜色，默认是clearColor
 
