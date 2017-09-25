@@ -2,7 +2,7 @@
 //  ViewController.h
 //  ZXGQRCodeExample
 //
-//  Created by san_xu on 2017/9/22.
+//  Created by Coder_ZXG on 2017/9/22.
 //  Copyright © 2017年 onzxgway. All rights reserved.
 //
 

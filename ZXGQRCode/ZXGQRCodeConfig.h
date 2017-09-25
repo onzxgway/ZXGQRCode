@@ -2,8 +2,8 @@
 //  ZXGQRCodeConfig.h
 //  ZXGQRCode
 //
-//  Created by san_xu on 2017/4/22.
-//  Copyright © 2017年 com.zxg. All rights reserved.
+//  Created by Coder_ZXG on 2017/4/22.
+//  Copyright © 2017年 朱献国. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>

@@ -21,19 +21,11 @@
 		F0501F351F75274200C93A0C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F0501F341F75274200C93A0C /* Assets.xcassets */; };
 		F0501F381F75274200C93A0C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F0501F361F75274200C93A0C /* LaunchScreen.storyboard */; };
 		F0501F431F75274300C93A0C /* ZXGQRCodeExampleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F0501F421F75274300C93A0C /* ZXGQRCodeExampleTests.m */; };
-		F0501F4E1F75274300C93A0C /* ZXGQRCodeExampleUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = F0501F4D1F75274300C93A0C /* ZXGQRCodeExampleUITests.m */; };
 		F0930F491F77EB2F00C0CBA6 /* ZXGQRCode.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F0930F481F77EB2F00C0CBA6 /* ZXGQRCode.bundle */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
 		F0501F3F1F75274300C93A0C /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = F0501F1D1F75274200C93A0C /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = F0501F241F75274200C93A0C;
-			remoteInfo = ZXGQRCodeExample;
-		};
-		F0501F4A1F75274300C93A0C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = F0501F1D1F75274200C93A0C /* Project object */;
 			proxyType = 1;
@@ -71,9 +63,6 @@
 		F0501F3E1F75274300C93A0C /* ZXGQRCodeExampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ZXGQRCodeExampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0501F421F75274300C93A0C /* ZXGQRCodeExampleTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZXGQRCodeExampleTests.m; sourceTree = "<group>"; };
 		F0501F441F75274300C93A0C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F0501F491F75274300C93A0C /* ZXGQRCodeExampleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ZXGQRCodeExampleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		F0501F4D1F75274300C93A0C /* ZXGQRCodeExampleUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZXGQRCodeExampleUITests.m; sourceTree = "<group>"; };
-		F0501F4F1F75274300C93A0C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F0930F481F77EB2F00C0CBA6 /* ZXGQRCode.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ZXGQRCode.bundle; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -86,13 +75,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		F0501F3B1F75274300C93A0C /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		F0501F461F75274300C93A0C /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -151,7 +133,6 @@
 			children = (
 				F0501F271F75274200C93A0C /* ZXGQRCodeExample */,
 				F0501F411F75274300C93A0C /* ZXGQRCodeExampleTests */,
-				F0501F4C1F75274300C93A0C /* ZXGQRCodeExampleUITests */,
 				F0501F261F75274200C93A0C /* Products */,
 			);
 			sourceTree = "<group>";
@@ -161,7 +142,6 @@
 			children = (
 				F0501F251F75274200C93A0C /* ZXGQRCodeExample.app */,
 				F0501F3E1F75274300C93A0C /* ZXGQRCodeExampleTests.xctest */,
-				F0501F491F75274300C93A0C /* ZXGQRCodeExampleUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -193,15 +173,6 @@
 				F0501F441F75274300C93A0C /* Info.plist */,
 			);
 			path = ZXGQRCodeExampleTests;
-			sourceTree = "<group>";
-		};
-		F0501F4C1F75274300C93A0C /* ZXGQRCodeExampleUITests */ = {
-			isa = PBXGroup;
-			children = (
-				F0501F4D1F75274300C93A0C /* ZXGQRCodeExampleUITests.m */,
-				F0501F4F1F75274300C93A0C /* Info.plist */,
-			);
-			path = ZXGQRCodeExampleUITests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -242,24 +213,6 @@
 			productReference = F0501F3E1F75274300C93A0C /* ZXGQRCodeExampleTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		F0501F481F75274300C93A0C /* ZXGQRCodeExampleUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = F0501F581F75274300C93A0C /* Build configuration list for PBXNativeTarget "ZXGQRCodeExampleUITests" */;
-			buildPhases = (
-				F0501F451F75274300C93A0C /* Sources */,
-				F0501F461F75274300C93A0C /* Frameworks */,
-				F0501F471F75274300C93A0C /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				F0501F4B1F75274300C93A0C /* PBXTargetDependency */,
-			);
-			name = ZXGQRCodeExampleUITests;
-			productName = ZXGQRCodeExampleUITests;
-			productReference = F0501F491F75274300C93A0C /* ZXGQRCodeExampleUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -275,11 +228,6 @@
 						ProvisioningStyle = Automatic;
 					};
 					F0501F3D1F75274300C93A0C = {
-						CreatedOnToolsVersion = 8.3.1;
-						ProvisioningStyle = Automatic;
-						TestTargetID = F0501F241F75274200C93A0C;
-					};
-					F0501F481F75274300C93A0C = {
 						CreatedOnToolsVersion = 8.3.1;
 						ProvisioningStyle = Automatic;
 						TestTargetID = F0501F241F75274200C93A0C;
@@ -301,7 +249,6 @@
 			targets = (
 				F0501F241F75274200C93A0C /* ZXGQRCodeExample */,
 				F0501F3D1F75274300C93A0C /* ZXGQRCodeExampleTests */,
-				F0501F481F75274300C93A0C /* ZXGQRCodeExampleUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -319,13 +266,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		F0501F3C1F75274300C93A0C /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		F0501F471F75274300C93A0C /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -360,14 +300,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		F0501F451F75274300C93A0C /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				F0501F4E1F75274300C93A0C /* ZXGQRCodeExampleUITests.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -375,11 +307,6 @@
 			isa = PBXTargetDependency;
 			target = F0501F241F75274200C93A0C /* ZXGQRCodeExample */;
 			targetProxy = F0501F3F1F75274300C93A0C /* PBXContainerItemProxy */;
-		};
-		F0501F4B1F75274300C93A0C /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = F0501F241F75274200C93A0C /* ZXGQRCodeExample */;
-			targetProxy = F0501F4A1F75274300C93A0C /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -536,28 +463,6 @@
 			};
 			name = Release;
 		};
-		F0501F591F75274300C93A0C /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				INFOPLIST_FILE = ZXGQRCodeExampleUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = onzxgway.ZXGQRCodeExampleUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_TARGET_NAME = ZXGQRCodeExample;
-			};
-			name = Debug;
-		};
-		F0501F5A1F75274300C93A0C /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				INFOPLIST_FILE = ZXGQRCodeExampleUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = onzxgway.ZXGQRCodeExampleUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_TARGET_NAME = ZXGQRCodeExample;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -584,15 +489,6 @@
 			buildConfigurations = (
 				F0501F561F75274300C93A0C /* Debug */,
 				F0501F571F75274300C93A0C /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		F0501F581F75274300C93A0C /* Build configuration list for PBXNativeTarget "ZXGQRCodeExampleUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				F0501F591F75274300C93A0C /* Debug */,
-				F0501F5A1F75274300C93A0C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

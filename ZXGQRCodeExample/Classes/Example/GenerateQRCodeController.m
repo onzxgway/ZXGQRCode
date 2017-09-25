@@ -2,21 +2,16 @@
 //  GenerateQRCodeController.m
 //  ZXGQRCode
 //
-//  Created by san_xu on 2017/4/24.
-//  Copyright © 2017年 com.zxg. All rights reserved.
+//  Created by Coder_ZXG on 2017/4/24.
+//  Copyright © 2017年 朱献国. All rights reserved.
 //
 
 #import "GenerateQRCodeController.h"
 #import "ZXGQRCode.h"
 
-@interface GenerateQRCodeController () {
+@implementation GenerateQRCodeController {
     NSMutableArray *_imgs;
 }
-
-@end
-
-@implementation GenerateQRCodeController
-
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -33,10 +28,10 @@
     UIImage *two = [ZXGQRCodeTool generateColoursQRCodeImageWithString:url imageSize:size rgbColor:[UIColor greenColor] backgroundColor:[UIColor blueColor]];
     [_imgs addObject:two];
     
-    UIImage *three = [ZXGQRCodeTool generateLogoQRCodeImageWithString:url imageSize:size logoImageName:@"help" logoImageSize:logoImageSize];
+    UIImage *three = [ZXGQRCodeTool generateLogoQRCodeImageWithString:url imageSize:size logoImageName:@"ZXGQRCode.bundle/logo@2x.png" logoImageSize:logoImageSize];
     [_imgs addObject:three];
     
-    UIImage *four = [ZXGQRCodeTool generateColoursLogoImageWithString:url imageSize:size rgbColor:[UIColor orangeColor] backgroundColor:[UIColor grayColor] logoImageName:@"help" logoImageSize:logoImageSize];
+    UIImage *four = [ZXGQRCodeTool generateColoursLogoImageWithString:url imageSize:size rgbColor:[UIColor orangeColor] backgroundColor:[UIColor grayColor] logoImageName:@"ZXGQRCode.bundle/logo@2x.png" logoImageSize:logoImageSize];
     [_imgs addObject:four];
     
     [self addImageView];
