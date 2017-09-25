@@ -92,7 +92,7 @@
     NSArray *features = [detector featuresInImage:qrCodeImage.CIImage];
     if (features == nil || features.count <= 0) return @"";
     
-    CIQRCodeFeature *feature = [features objectAtIndex:0];
+    CIQRCodeFeature *feature = [features firstObject];
     return feature.messageString;
 }
 
