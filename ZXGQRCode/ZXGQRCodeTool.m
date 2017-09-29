@@ -87,7 +87,7 @@
 
 //解析二维码图片
 + (NSString *)parseQRCodeImage:(UIImage *)qrCodeImage {
-    CIDetector *detector = [CIDetector detectorOfType:CIDetectorTypeQRCode context:nil options:@{CIDetectorAccuracy : CIDetectorAccuracyHigh}];
+    CIDetector *detector = [CIDetector detectorOfType:CIDetectorTypeQRCode context:nil options:@{CIDetectorAccuracy : CIDetectorAccuracyHigh}];//CIDetectorAccuracy指定检测精度,CIDetectorAccuracyHigh | CIDetectorAccuracyLow
     
     NSArray *features = [detector featuresInImage:qrCodeImage.CIImage];
     if (features == nil || features.count <= 0) return @"";
@@ -192,8 +192,9 @@ void ProviderReleaseData (void *info, const void *data, size_t size){
     
     CIFilter *filter = [CIFilter filterWithName:@"CIQRCodeGenerator"];
     [filter setDefaults];
-    [filter setValue:[str dataUsingEncoding:NSUTF8StringEncoding] forKey:@"inputMessage"]; // 通过kvo方式给一个字符串，生成二维码
-    [filter setValue:@"H" forKey:@"inputCorrectionLevel"];// 设置二维码的纠错水平，纠错水平越高，可以污损的范围越大，值可设置为L(Low) |  M(Medium) | Q | H(High)
+    // 通过kvc方式给属性赋值
+    [filter setValue:[str dataUsingEncoding:NSUTF8StringEncoding] forKey:@"inputMessage"];
+    [filter setValue:@"H" forKey:@"inputCorrectionLevel"];//设置二维码的纠错水平，纠错水平越高，可以污损的范围越大，值可设置为L(Low) |  M(Medium) | Q | H(High)
     return [filter outputImage];
 }
 
@@ -201,30 +202,34 @@ void ProviderReleaseData (void *info, const void *data, size_t size){
 + (CIImage *)generateColoursImageWithString:(NSString *)string
                                rgbColor:(UIColor *)rgbColor
                         backgroundColor:(UIColor *)backgroundColor {
+    //一：生成黑白的二维码图片
     CIImage *ciImage = [self generateQRCodeImageWithString:string];
     
+    //二：给黑白的二维码图片渲染指定的颜色
     CIFilter *filter = [CIFilter filterWithName:@"CIFalseColor"];// 创建颜色滤镜
     [filter setDefaults];
-    [filter setValue:ciImage forKey:@"inputImage"]; // 通过kvo方式给一个字符串，生成二维码
-    
-    [filter setValue:[CIColor colorWithCGColor:rgbColor.CGColor] forKey:@"inputColor0"];// 替换颜色
-    [filter setValue:[CIColor colorWithCGColor:backgroundColor.CGColor] forKey:@"inputColor1"];// 替换背景颜色
+    // 通过kvc方式给属性赋值
+    [filter setValue:ciImage forKey:@"inputImage"];
+    [filter setValue:[CIColor colorWithCGColor:rgbColor.CGColor] forKey:@"inputColor0"];// 颜色
+    [filter setValue:[CIColor colorWithCGColor:backgroundColor.CGColor] forKey:@"inputColor1"];// 背景颜色
     return [filter outputImage];
 }
 
 
-//根据CIImage生成指定大小的UIImage
+//根据黑白的CIImage生成指定大小的UIImage
 + (UIImage *)generateUIImageFormCIImage:(CIImage *)image imageSize:(CGSize)imageSize {
-    
+     
     CGRect extent = CGRectIntegral(image.extent);
     CGFloat scale = MIN(imageSize.width / CGRectGetWidth(extent), imageSize.height / CGRectGetHeight(extent));
     
-    // 1.创建bitmap;
+    // 1.创建bitmap
     size_t width  = CGRectGetWidth(extent)  * scale;
     size_t height = CGRectGetHeight(extent) * scale;
 
-    CGColorSpaceRef cs = CGColorSpaceCreateDeviceGray();
-    CGContextRef bitmapRef = CGBitmapContextCreate(nil, width, height, 8, 0, cs, (CGBitmapInfo)kCGImageAlphaNone);
+//    CGColorSpaceRef cs = CGColorSpaceCreateDeviceGray();
+//    CGContextRef bitmapRef = CGBitmapContextCreate(nil, width, height, 8, 0, cs, (CGBitmapInfo)kCGImageAlphaNone);
+    UIGraphicsBeginImageContext(CGSizeMake(width, height));
+    CGContextRef bitmapRef = UIGraphicsGetCurrentContext();
     
     CIContext *context = [CIContext contextWithOptions:nil];
     CGImageRef bitmapImage = [context createCGImage:image
@@ -234,22 +239,23 @@ void ProviderReleaseData (void *info, const void *data, size_t size){
     CGContextDrawImage(bitmapRef, extent, bitmapImage);
     
     // 2.保存bitmap到图片
-    CGImageRef scaledImage = CGBitmapContextCreateImage(bitmapRef);
-    
-    CGContextRelease(bitmapRef);
+    UIImage *scaledImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+//    CGImageRef scaledImage = CGBitmapContextCreateImage(bitmapRef);
+//    CGContextRelease(bitmapRef);
     CGImageRelease(bitmapImage);
     
     // 3.生成原图
-    return [UIImage imageWithCGImage:scaledImage];
+    return scaledImage;//[UIImage imageWithCGImage:scaledImage];
 }
 
-//根据CIImage生成指定大小的UIImage
+//根据彩色的CIImage生成指定大小的UIImage
 + (UIImage *)generateColoursUIImageFormCIImage:(CIImage *)image imageSize:(CGSize)imageSize {
     
     CGRect extent = CGRectIntegral(image.extent);
     CGFloat scale = MIN(imageSize.width / CGRectGetWidth(extent), imageSize.height / CGRectGetHeight(extent));
     
-    // 1.创建bitmap;
+    // 1.创建bitmap
     size_t width  = CGRectGetWidth(extent)  * scale;
     size_t height = CGRectGetHeight(extent) * scale;
     
@@ -274,7 +280,7 @@ void ProviderReleaseData (void *info, const void *data, size_t size){
 }
 
 
-//给UIImage中间添加水印图片  注意尺寸不要太大（最大不超过二维码图片的%30），太大会造成扫不出来
+//给UIImage中间添加水印图片 注意尺寸不要太大（最大不超过二维码图片的%30），太大会造成扫不出来
 + (UIImage *)generateLogoImageWithImage:(UIImage *)originImage
                               imageSize:(CGSize)imageSize
                           logoImageName:(NSString *)logoImageName

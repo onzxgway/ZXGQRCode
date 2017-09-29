@@ -52,7 +52,7 @@ NS_ASSUME_NONNULL_BEGIN
 
  @param str 要生成二维码的数据
  @param imageSize 生成的二维码图片size
- @param rgbColor 主题颜色
+ @param rgbColor 二维码颜色
  @param backgroundColor 背景颜色
  @return 生成的二维码图片
  */
