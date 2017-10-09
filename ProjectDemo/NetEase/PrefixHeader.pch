@@ -1,0 +1,16 @@
+//
+//  PrefixHeader.pch
+//  网易新闻
+//
+//  Created by 朱献国 on 16/09/2017.
+//  Copyright © 2017 朱献国. All rights reserved.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+
+
+#define ScreenW [UIScreen mainScreen].bounds.size.width
+#define RandomColor [UIColor colorWithRed:arc4random_uniform(256) / 255.0 green:arc4random_uniform(256) / 255.0 blue:arc4random_uniform(256) / 255.0 alpha:1.f]
+
+#endif /* PrefixHeader_pch */
