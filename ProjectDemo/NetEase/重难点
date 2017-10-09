@@ -1,0 +1,36 @@
+重点：
+1,UIViewController的属性automaticallyAdjustsScrollViewInsets，默认是YES
+
+iOS7.0之后出现的，作用是：含有UIScrollView及其子类视图的控制器，如果在导航控制器中，UIScrollView会自动的在顶部增加64pt的额外高度，这样可以让scroll占据整个视图，又不会让导航栏遮盖。
+
+2,父子控制器
+在iOS开发中，如果A控制器的View添加到B控制器的View上，那么A控制器一定要添加到B控制器里，成为其子控制器。
+原因：根据响应者链的原理，事件要想分发到view，必须要先传递到其所在的控制器，然后才能分发到view。
+顺序是 A->AView->B->BView，如果没有B，那么BView上的所有事件都没有响应。
+
+3,判断UIScrollView的滑动方向
+1）使用一个全局变量记录之前的偏移量
+2）在scrollViewDidScroll代理方法中
+获取当前的偏移量 scrollView.contentOffset.y
+比较当前的偏移量与之前的偏移量的大小，即可判断
+把当前的偏移量赋值给之前的偏移量preOffsetX = offsetX
+
+4,scrollViewDidEndDecelerating的使用
+
+5,善于利用原生控件的不同状态设置不同的样式。
+比如UILabel，有highlighted和普通状态。
+给控件不同状态设置不同的样式，如果改变样式，只需要切换状态即可。
+
+6,控制器创建好了之后，如果不显示，就不会load加载View，控制器中的loadView、ViewDidLoad、viewWillAppear等等方法都不会调用。可以使用控制器的isViewLoaded方法去判断View是否加载。
+
+难点：
+1,选中的组的标题居中
+思路：通过设置titleScrollView的contentOffset的值实现的。
+方法：取选中标题的中心点坐标的y值，减去屏幕宽度的一半，即可。
+
+
+
+
+
+
+

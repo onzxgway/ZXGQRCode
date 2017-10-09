@@ -1,0 +1,29 @@
+//
+//  PrefixHeader.pch
+//  FrameModel方式
+//
+//  Created by san_xu on 2017/3/17.
+//  Copyright © 2017年 朱献国. All rights reserved.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+#import <UIKit/UIKit.h>
+
+//屏幕宽度
+#define SCREENW [UIScreen mainScreen].bounds.size.width
+//屏幕高度
+#define SCREENH [UIScreen mainScreen].bounds.size.height
+
+static CGFloat const MARGIN = 10;//间距
+static CGFloat const HeadImageWH = 40;//间距
+static CGFloat const BFONT_SIZE = 16;//昵称与内容的文字大小
+static CGFloat const SFONT_SIZE = 12;//来源与时间的文字大小
+
+//分割线颜色
+#define LineColor [UIColor colorWithRed:200 / 255.0 green:199 / 255.0 blue:204 / 255.0 alpha:1.0]
+
+//背景颜色
+#define BackColor [UIColor colorWithRed:242 / 255.0 green:242 / 255.0 blue:242 / 255.0 alpha:1.0]
+
+#endif /* PrefixHeader_pch */
