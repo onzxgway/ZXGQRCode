@@ -14,7 +14,6 @@
     ZXGQRCodeScanView *_qrCodeScanView;
     ZXGQRCodeLoadingView *_loadingView;
 }
-
 @end
 
 @implementation ScanQRCodeController
@@ -28,8 +27,8 @@
     _loadingView = [[ZXGQRCodeLoadingView alloc] init];
     [self.view addSubview:_loadingView];
     _loadingView.frame = self.view.bounds;
-    
 }
+
 
 - (void)addScanView {
     //第一种使用方式

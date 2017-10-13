@@ -9,6 +9,7 @@
 #import "ViewController.h"
 #import "ScanQRCodeController.h"
 #import "GenerateQRCodeController.h"
+#import "SVProgressHUD.h"
 
 @implementation ViewController
 
@@ -20,7 +21,13 @@
 
 //扫描
 - (IBAction)scanQRCode:(id)sender {
+    //判断 是模拟器 还是真机
+#if TARGET_IPHONE_SIMULATOR //simulator
+    [SVProgressHUD showErrorWithStatus:@"not support Simulator"];
+    [SVProgressHUD dismissWithDelay:1.0f];
+#elif TARGET_OS_IPHONE  //device
     [self.navigationController pushViewController:[[ScanQRCodeController alloc] init] animated:YES];
+#endif
 }
 
 //生成

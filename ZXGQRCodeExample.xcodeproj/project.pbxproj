@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		040E8C2C1F90950B009B2056 /* SVIndefiniteAnimatedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 040E8C241F90950B009B2056 /* SVIndefiniteAnimatedView.m */; };
+		040E8C2D1F90950B009B2056 /* SVProgressAnimatedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 040E8C261F90950B009B2056 /* SVProgressAnimatedView.m */; };
+		040E8C2E1F90950B009B2056 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 040E8C271F90950B009B2056 /* SVProgressHUD.bundle */; };
+		040E8C2F1F90950B009B2056 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 040E8C291F90950B009B2056 /* SVProgressHUD.m */; };
+		040E8C301F90950B009B2056 /* SVRadialGradientLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 040E8C2B1F90950B009B2056 /* SVRadialGradientLayer.m */; };
 		F02CB4051F75284000A905E3 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F02CB3FB1F75284000A905E3 /* AppDelegate.m */; };
 		F02CB4061F75284000A905E3 /* GenerateQRCodeController.m in Sources */ = {isa = PBXBuildFile; fileRef = F02CB3FE1F75284000A905E3 /* GenerateQRCodeController.m */; };
 		F02CB4071F75284000A905E3 /* ScanQRCodeController.m in Sources */ = {isa = PBXBuildFile; fileRef = F02CB4001F75284000A905E3 /* ScanQRCodeController.m */; };
@@ -35,6 +40,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		040E8C231F90950B009B2056 /* SVIndefiniteAnimatedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVIndefiniteAnimatedView.h; sourceTree = "<group>"; };
+		040E8C241F90950B009B2056 /* SVIndefiniteAnimatedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVIndefiniteAnimatedView.m; sourceTree = "<group>"; };
+		040E8C251F90950B009B2056 /* SVProgressAnimatedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressAnimatedView.h; sourceTree = "<group>"; };
+		040E8C261F90950B009B2056 /* SVProgressAnimatedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressAnimatedView.m; sourceTree = "<group>"; };
+		040E8C271F90950B009B2056 /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVProgressHUD.bundle; sourceTree = "<group>"; };
+		040E8C281F90950B009B2056 /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
+		040E8C291F90950B009B2056 /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
+		040E8C2A1F90950B009B2056 /* SVRadialGradientLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVRadialGradientLayer.h; sourceTree = "<group>"; };
+		040E8C2B1F90950B009B2056 /* SVRadialGradientLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVRadialGradientLayer.m; sourceTree = "<group>"; };
 		F02CB3FA1F75284000A905E3 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		F02CB3FB1F75284000A905E3 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		F02CB3FD1F75284000A905E3 /* GenerateQRCodeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GenerateQRCodeController.h; sourceTree = "<group>"; };
@@ -84,9 +98,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		040E8C221F90950B009B2056 /* SVProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				040E8C231F90950B009B2056 /* SVIndefiniteAnimatedView.h */,
+				040E8C241F90950B009B2056 /* SVIndefiniteAnimatedView.m */,
+				040E8C251F90950B009B2056 /* SVProgressAnimatedView.h */,
+				040E8C261F90950B009B2056 /* SVProgressAnimatedView.m */,
+				040E8C271F90950B009B2056 /* SVProgressHUD.bundle */,
+				040E8C281F90950B009B2056 /* SVProgressHUD.h */,
+				040E8C291F90950B009B2056 /* SVProgressHUD.m */,
+				040E8C2A1F90950B009B2056 /* SVRadialGradientLayer.h */,
+				040E8C2B1F90950B009B2056 /* SVRadialGradientLayer.m */,
+			);
+			path = SVProgressHUD;
+			sourceTree = "<group>";
+		};
 		F02CB3F91F75284000A905E3 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				040E8C221F90950B009B2056 /* SVProgressHUD */,
 				F02CB3FC1F75284000A905E3 /* Example */,
 				F02CB3FA1F75284000A905E3 /* AppDelegate.h */,
 				F02CB3FB1F75284000A905E3 /* AppDelegate.m */,
@@ -258,6 +289,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				040E8C2E1F90950B009B2056 /* SVProgressHUD.bundle in Resources */,
 				F0501F381F75274200C93A0C /* LaunchScreen.storyboard in Resources */,
 				F0501F351F75274200C93A0C /* Assets.xcassets in Resources */,
 				F02CB4271F7529D100A905E3 /* Main.storyboard in Resources */,
@@ -286,9 +318,13 @@
 				F02CB4071F75284000A905E3 /* ScanQRCodeController.m in Sources */,
 				F0501F2A1F75274200C93A0C /* main.m in Sources */,
 				F02CB4091F75284000A905E3 /* ViewController.m in Sources */,
+				040E8C301F90950B009B2056 /* SVRadialGradientLayer.m in Sources */,
 				F02CB4051F75284000A905E3 /* AppDelegate.m in Sources */,
 				F02CB4061F75284000A905E3 /* GenerateQRCodeController.m in Sources */,
+				040E8C2F1F90950B009B2056 /* SVProgressHUD.m in Sources */,
+				040E8C2C1F90950B009B2056 /* SVIndefiniteAnimatedView.m in Sources */,
 				F02CB4251F7528DC00A905E3 /* ZXGQRCodeTool.m in Sources */,
+				040E8C2D1F90950B009B2056 /* SVProgressAnimatedView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
